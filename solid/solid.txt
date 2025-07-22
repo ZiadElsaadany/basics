@@ -1,0 +1,18 @@
+
+SIOLID:
+The SOLID principles are five design principles in object-oriented programming (OOP) that help make software:
+	- Easier to maintain
+	- More flexible
+	- More understandable
+	- Better for reuse and testing
+
+ S– Single Responsibility Principle (SRP) :
+	A class should have only one reason to change. In other words, it should do one thing only.
+ O– Open/Closed Principle (OCP)
+	Software entities (classes, modules, functions) should be open for extension, but closed for modification.
+L – Liskov Substitution Principle (LSP)
+	Subclasses should be replaceable for their base classes without changing the correctness of the program.
+I – Interface Segregation Principle (ISP)
+                    Clients should not be forced to depend on interfaces they do not use. Use many small interfaces instead of one big one.
+D – Dependency Inversion Principle (DIP)	
+                    High-level modules should not depend on low-level modules. Both should depend on abstractions (interfaces).
