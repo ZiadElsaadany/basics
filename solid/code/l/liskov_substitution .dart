@@ -25,11 +25,24 @@ class Penguin extends Bird {
 
 
 
+void main(List<String> args) {
+  
+  final  FlyingBird sparrow = Sparrow();
+  final  Penguin1  penguin = Penguin1();
+
+  sparrow.fly();
+  penguin.swim();
+
+
+
+
+
+}
+
 
 //✅ Correct Example (Respects LSP):
-abstract class BirdTrue {}
 
-abstract class FlyingBird extends BirdTrue {
+abstract class FlyingBird {
   void fly();
 }
 
@@ -42,7 +55,7 @@ class Sparrow extends FlyingBird {
   }
 }
 
-class Penguin1 extends BirdTrue {
+class Penguin1 {
   void swim() {
     print("Penguin is swimming");
   }
