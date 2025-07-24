@@ -1,14 +1,12 @@
-
 /// ❌  Bad Example (Violates LSP)
 
-// main(){ 
-   
+// main(){
 
 //    PaymentProcessor paypal = PayPalProcessor();
 //    PaymentProcessor free = FreeTrialProcessor();
 //    paypal.processPayment(100);
 //    free.processPayment(4);   // ❌  exception
- 
+
 // }
 class PaymentProcessor {
   void processPayment(double amount) {
@@ -30,30 +28,26 @@ class FreeTrialProcessor extends PaymentProcessor {
   }
 }
 
-
 /// ✅ Correct Example (Respects LSP)
 
 void main(List<String> args) {
-  
-PaymentProcessor1 paypal = PayPalProcessor1(amount: 100) ;
-PaymentProcessor1 free = FreeTrialProcessor1();
-paypal.processPayment();
-free.processPayment();
-
-
-
-
+  PaymentProcessor1 paypal = PayPalProcessor1(amount: 100);
+  PaymentProcessor1 free = FreeTrialProcessor1();
+  paypal.processPayment();
+  free.processPayment();
 }
-abstract class PaymentProcessor1 { 
-  void processPayment(  ) ;
-} 
+
+abstract class PaymentProcessor1 {
+  void processPayment();
+}
+
 class PayPalProcessor1 extends PaymentProcessor1 {
-final double amount  ;
+  final double amount;
 
   PayPalProcessor1({required this.amount});
   @override
   void processPayment() {
-    print( "price is $amount");
+    print("price is $amount");
   }
 }
 
@@ -61,7 +55,6 @@ class FreeTrialProcessor1 extends PaymentProcessor1 {
   @override
   void processPayment() {
     // TODO: implement processPayment
-    print("free trial ") ;
+    print("free trial ");
   }
-
-  }
+}

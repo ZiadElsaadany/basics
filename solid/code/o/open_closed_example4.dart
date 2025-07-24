@@ -14,17 +14,17 @@ class User {
     }
   }
 }
+
 /// ✅
-/// 
+///
 
 void main(List<String> args) {
-
-  final backendData = {"rule": "admin"}; 
+  final backendData = {"rule": "admin"};
 
   DashboardAccessRole role = UserRoleFactory.fromString(backendData['rule']!);
   role.accessDashboard(); // Admin can access everything.
-
 }
+
 class UserRoleFactory {
   static final Map<String, DashboardAccessRole> _roles = {
     'admin': AdminDashboardAccess(),
@@ -37,23 +37,24 @@ class UserRoleFactory {
   }
 }
 
-
-
 abstract class DashboardAccessRole {
-  void accessDashboard() ;
+  void accessDashboard();
 }
-class  AdminDashboardAccess implements DashboardAccessRole {
+
+class AdminDashboardAccess implements DashboardAccessRole {
   @override
   void accessDashboard() {
     print('Access granted to admin dashboard.');
   }
 }
+
 class EditorDashboardAccess implements DashboardAccessRole {
   @override
   void accessDashboard() {
     print('Access granted to editor dashboard.');
   }
 }
+
 class UserDashboardAccess implements DashboardAccessRole {
   @override
   void accessDashboard() {

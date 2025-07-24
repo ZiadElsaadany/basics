@@ -1,13 +1,12 @@
 // ❌  Violates OCP
 
-
 void main(List<String> args) {
   // final emailNotifier =PushNotifier(notifierStrategy: EmailNotifier());
 
-  final NotifierStrategy emailNotifier = EmailNotifier(); 
+  final NotifierStrategy emailNotifier = EmailNotifier();
   emailNotifier.send("Hello");
-  
 }
+
 class Notifier {
   void send(String type, String message) {
     if (type == "email") {
@@ -19,11 +18,12 @@ class Notifier {
     }
   }
 }
-abstract class NotifierStrategy{
-  void send(String message);
- }
- class PushNotifier{  
 
+abstract class NotifierStrategy {
+  void send(String message);
+}
+
+class PushNotifier {
   final NotifierStrategy notifierStrategy;
 
   PushNotifier({required this.notifierStrategy});
@@ -31,17 +31,18 @@ abstract class NotifierStrategy{
   void send(String message) {
     notifierStrategy.send(message);
   }
- }
+}
+
 class EmailNotifier implements NotifierStrategy {
   @override
   void send(String message) {
     print("Sending Email: $message");
   }
 }
+
 class SmsNotifier implements NotifierStrategy {
   @override
   void send(String message) {
     print("Sending SMS: $message");
   }
 }
-

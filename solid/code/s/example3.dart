@@ -1,18 +1,12 @@
-void main ( ) { 
+void main() {
+  InvoiceTrue invoice = InvoiceTrue("Ziad", [100.0, 150.0, 75.5]);
 
-InvoiceTrue invoice = InvoiceTrue("Ziad", [100.0, 150.0, 75.5]);
+  InvoicePrinter invoicePrinter = InvoicePrinter();
+  invoicePrinter.printInvoice(invoice, InvoiceCalculator());
 
-InvoicePrinter invoicePrinter = InvoicePrinter();
-invoicePrinter.printInvoice(invoice, InvoiceCalculator());
-
-InvoiceSaver invoiceSaver = InvoiceSaver();
-invoiceSaver.saveToFile(invoice);
-
-
-
-} 
-
-
+  InvoiceSaver invoiceSaver = InvoiceSaver();
+  invoiceSaver.saveToFile(invoice);
+}
 
 // ❌ Violates (SRP):
 
@@ -40,14 +34,9 @@ class Invoice {
   }
 }
 
+// ✅ SRP Applied :
 
-
-
-
-// ✅ SRP Applied : 
-
-class InvoiceTrue{ 
-
+class InvoiceTrue {
   final String customer;
   final List<double> items;
 
@@ -60,7 +49,9 @@ class InvoicePrinter {
     for (var item in invoice.items) {
       print("Item: \$${item.toStringAsFixed(2)}");
     }
-    print("Total: \$${invoiceCalculator.calculateTotal(invoice).toStringAsFixed(2)}");
+    print(
+      "Total: \$${invoiceCalculator.calculateTotal(invoice).toStringAsFixed(2)}",
+    );
   }
 }
 
@@ -70,6 +61,7 @@ class InvoiceSaver {
     print("Saving invoice for ${invoice.customer} to file...");
   }
 }
+
 class InvoiceCalculator {
   double calculateTotal(InvoiceTrue invoice) {
     return invoice.items.reduce((a, b) => a + b);

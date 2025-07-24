@@ -1,6 +1,8 @@
-
 void main() {
-  final post = BlogPost2(title: "Dart SRP", content: "Keep classes focused on one task.");
+  final post = BlogPost2(
+    title: "Dart SRP",
+    content: "Keep classes focused on one task.",
+  );
 
   final printer = BlogPrinter();
   final database = BlogData();
@@ -11,20 +13,6 @@ void main() {
   notifier.notifySubscribers(post);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ❌ Violation of SRP (One class does too much):
 class BlogPost {
   String title;
@@ -34,44 +22,34 @@ class BlogPost {
 
   void saveToDatabase() {} // save to database
 
-  void printPost() {  // print post
+  void printPost() {
+    // print post
     print("Title: $title\nContent: $content");
   }
 
-  void sendToSubscribers() {  }  // Send notification to subscribers
+  void sendToSubscribers() {} // Send notification to subscribers
 }
 
-
-
-
-
-
-
-
-
 // ✅ SRP Applied :
-class BlogPost2{ 
-final   String title; 
- final String content;
-  BlogPost2({required this.title, required this.content}); 
-  
+class BlogPost2 {
+  final String title;
+  final String content;
+  BlogPost2({required this.title, required this.content});
+}
 
- } 
- class BlogPrinter{
+class BlogPrinter {
   void printPost(BlogPost2 blogPost) {
     print("Title: ${blogPost.title}\nContent: ${blogPost.content}");
   }
- }
- class BlogData{  
- void saveToDatabase( BlogPost2 blogPost) 
- {
-    //  store  to database 
- }
- void retreiveFromDatabase( ) { }
+}
 
- }
- class NotificationService {
-  void notifySubscribers(BlogPost2 blogPost) { }
- }
+class BlogData {
+  void saveToDatabase(BlogPost2 blogPost) {
+    //  store  to database
+  }
+  void retreiveFromDatabase() {}
+}
 
-
+class NotificationService {
+  void notifySubscribers(BlogPost2 blogPost) {}
+}

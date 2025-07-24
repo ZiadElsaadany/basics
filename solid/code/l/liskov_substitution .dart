@@ -7,7 +7,6 @@
 // 💡 Summary Rule:
 // If your subclass cannot fully behave like the parent class, do NOT inherit from it. Use composition instead.
 
-
 // ❌ Bad Example (Violates LSP):
 class Bird {
   void fly() {
@@ -23,29 +22,19 @@ class Penguin extends Bird {
   }
 }
 
-
-
 void main(List<String> args) {
-  
-  final  FlyingBird sparrow = Sparrow();
-  final  Penguin1  penguin = Penguin1();
+  final FlyingBird sparrow = Sparrow();
+  final Penguin1 penguin = Penguin1();
 
   sparrow.fly();
   penguin.swim();
-
-
-
-
-
 }
-
 
 //✅ Correct Example (Respects LSP):
 
 abstract class FlyingBird {
   void fly();
 }
-
 
 //عصفور
 class Sparrow extends FlyingBird {

@@ -1,17 +1,13 @@
-
 // “Software entities should be open for extension but closed for modification.”
 // In short: you should be able to add new behavior without changing existing code.
 
-
-
 void main() {
-DiscountCalculatorTrue discountCalculatorTrue = DiscountCalculatorTrue(RegularDiscount());
+  DiscountCalculatorTrue discountCalculatorTrue = DiscountCalculatorTrue(
+    RegularDiscount(),
+  );
 
-discountCalculatorTrue.calculate(100);
-
+  discountCalculatorTrue.calculate(100);
 }
-
-
 
 /// ❌ Violation of OCP
 class DiscountCalculator {
@@ -28,38 +24,37 @@ class DiscountCalculator {
   }
 }
 
+/// ✅ OCP Applied
 
-/// ✅ OCP Applied 
-
-abstract class  DiscountStrategy  {  
-
-double calculate( double amount);
-
+abstract class DiscountStrategy {
+  double calculate(double amount);
 }
 
 class DiscountCalculatorTrue {
-  DiscountStrategy  discountCalculatorByRule;
+  DiscountStrategy discountCalculatorByRule;
   DiscountCalculatorTrue(this.discountCalculatorByRule);
   double calculate(double amount) {
-    return discountCalculatorByRule.calculate( amount);
+    return discountCalculatorByRule.calculate(amount);
   }
 }
 
-class StudentDiscount  extends DiscountStrategy  {
+class StudentDiscount extends DiscountStrategy {
   @override
-  double calculate( double amount) {
-    return 0.85* amount;
+  double calculate(double amount) {
+    return 0.85 * amount;
   }
 }
-class VipDiscount extends DiscountStrategy  {
+
+class VipDiscount extends DiscountStrategy {
   @override
-  double calculate( double amount) {
+  double calculate(double amount) {
     return 0.8 * amount;
   }
 }
-class RegularDiscount extends DiscountStrategy  {
+
+class RegularDiscount extends DiscountStrategy {
   @override
-  double calculate( double amount) {
+  double calculate(double amount) {
     return 0.9 * amount;
   }
 }
