@@ -27,8 +27,10 @@ class User {
 
 class UserTrue {
   final String name;
+
   UserTrue({required this.name});
 }
+
 
 class EmailService {
   void sendEmail(UserTrue user) {

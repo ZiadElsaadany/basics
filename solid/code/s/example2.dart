@@ -1,12 +1,12 @@
 void main() {
-  final post = BlogPost2(
+  final  BlogPost2 post = BlogPost2(
     title: "Dart SRP",
     content: "Keep classes focused on one task.",
   );
 
-  final printer = BlogPrinter();
-  final database = BlogData();
-  final notifier = NotificationService();
+  final BlogPrinter printer = BlogPrinter();
+  final BlogData database = BlogData();
+  final NotificationService notifier = NotificationService();
 
   database.saveToDatabase(post);
   printer.printPost(post);

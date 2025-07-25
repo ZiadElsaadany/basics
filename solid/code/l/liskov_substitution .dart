@@ -23,6 +23,8 @@ class Penguin extends Bird {
 }
 
 void main(List<String> args) {
+  
+
   final FlyingBird sparrow = Sparrow();
   final Penguin1 penguin = Penguin1();
 
@@ -44,7 +46,10 @@ class Sparrow extends FlyingBird {
   }
 }
 
-class Penguin1 {
+abstract class SwimmingBird {
+  void swim();
+}
+class Penguin1 extends SwimmingBird {
   void swim() {
     print("Penguin is swimming");
   }

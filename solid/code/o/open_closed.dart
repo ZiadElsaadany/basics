@@ -11,6 +11,8 @@ void main() {
 
 /// ❌ Violation of OCP
 class DiscountCalculator {
+
+  // 1000
   double calculate(String customerType, double amount) {
     if (customerType == "regular") {
       return amount * 0.9;
@@ -25,17 +27,16 @@ class DiscountCalculator {
 }
 
 /// ✅ OCP Applied
-
-abstract class DiscountStrategy {
-  double calculate(double amount);
-}
-
 class DiscountCalculatorTrue {
   DiscountStrategy discountCalculatorByRule;
   DiscountCalculatorTrue(this.discountCalculatorByRule);
   double calculate(double amount) {
     return discountCalculatorByRule.calculate(amount);
   }
+}
+
+abstract class DiscountStrategy {
+  double calculate(double amount);
 }
 
 class StudentDiscount extends DiscountStrategy {
